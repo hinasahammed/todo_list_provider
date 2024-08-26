@@ -72,13 +72,18 @@ class _HomeViewState extends State<HomeView> {
                             child: ListTile(
                                 tileColor: theme.colorScheme.primaryContainer,
                                 leading: Checkbox(
-                                  value: true,
-                                  onChanged: (value) {},
+                                  value: data.isCompleted,
+                                  onChanged: (value) {
+                                    homeProvider.updateCompleted(index);
+                                  },
                                 ),
                                 title: Text(
                                   data.taskName,
                                   style: theme.textTheme.bodyLarge!.copyWith(
                                     color: theme.colorScheme.primary,
+                                    decoration: data.isCompleted
+                                        ? TextDecoration.lineThrough
+                                        : TextDecoration.none,
                                   ),
                                 ),
                                 subtitle: Text(
@@ -91,7 +96,12 @@ class _HomeViewState extends State<HomeView> {
                                 trailing: Wrap(
                                   children: [
                                     IconButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        homeProvider.showEdit(
+                                          context,
+                                          index,
+                                        );
+                                      },
                                       icon: Icon(
                                         Icons.edit,
                                         color: theme.colorScheme.primary,
