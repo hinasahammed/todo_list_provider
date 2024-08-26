@@ -13,6 +13,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeViewmodel>(context, listen: false);
+
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
@@ -61,11 +63,8 @@ class _HomeViewState extends State<HomeView> {
                             ),
                           ),
                           confirmDismiss: (direction) async {
+                            homeProvider.removeTask(value.allTask[index]);
                             return null;
-
-                            // var isDismisssible = await HomeServices()
-                            //     .removeTaskConfirm(context, value[index]);
-                            // return isDismisssible;
                           },
                           key: ValueKey(value),
                           child: Card(
@@ -108,7 +107,9 @@ class _HomeViewState extends State<HomeView> {
             )),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          homeProvider.openSheet(context);
+        },
         child: const Icon(Icons.add),
       ),
     );

@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => HomeViewmodel(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Todo with provider',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
