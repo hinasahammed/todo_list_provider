@@ -6,6 +6,6 @@ class TaskModel {
   TaskModel({
     required this.taskName,
     required this.date,
-    this.isCompleted = false,
+    this.isCompleted = false, 
   });
 }
