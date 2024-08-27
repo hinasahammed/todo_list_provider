@@ -79,8 +79,12 @@ class _HomeViewState extends State<HomeView> {
                                 ),
                                 title: Text(
                                   data.taskName,
-                                  style: theme.textTheme.bodyLarge!.copyWith(
+                                  style: theme.textTheme.titleLarge!.copyWith(
                                     color: theme.colorScheme.primary,
+                                    fontWeight: FontWeight.w600,
+                                    decorationColor:
+                                        theme.colorScheme.onPrimary,
+                                    decorationThickness: 3,
                                     decoration: data.isCompleted
                                         ? TextDecoration.lineThrough
                                         : TextDecoration.none,
